@@ -6,11 +6,28 @@
 <body>
     <script>
     
-    let game = "on";
+    let turn = 1;
+    let humanScore = 0;
+    let cpuScore = 0;
 
-    while (game == "on") {
-    result();
-    }
+    game();
+
+    function game() {
+        for (turn = 1; turn < 6; turn++) {
+            result();
+        }
+        switch(true) {
+            case humanScore > cpuScore:
+                alert("Human Score:" + humanScore + "\nCpu Score:" + cpuScore + "\nHumans Win");
+                break;
+            case humanScore < cpuScore:
+                alert("Human Score:" + humanScore + "\nCpu Score:" + cpuScore+  "\nCPU Win");
+                break;
+            case humanScore == cpuScore:
+                alert("Human Score:" + humanScore + "\nCpu Score:" + cpuScore + "\nIt's a draw");
+                break;
+        }
+    }   
 
     function getRandomInt() {
         let integer = 3;
@@ -20,7 +37,7 @@
    function humanSelect() {
         let option = "invalid";
         while (option == "invalid") {
-            let select = prompt("Paper, Scissors or Rock? (Type 'Exit' to cancel)");
+            let select = prompt("Paper, Scissors or Rock? \nGame " + turn + " of 5 \n(Type 'Exit' to cancel)");
             select = select.toLowerCase();
             if (select == "paper" || select == "scissors" || select == "rock") {
                 option = "valid";
@@ -58,31 +75,37 @@
         let cpu = getRandomInt(); 
         switch(true) {
         case human == "paper" && cpu == 0:
-            alert("You: Paper. CPU: Paper. It's a draw");
+            alert("You: Paper. \nCPU: Paper. \nIt's a draw");
             break;
         case human == "paper" && cpu == 1:
-            alert("You: Paper. CPU: Scissors. You lose");
+            alert("You: Paper. \nCPU: Scissors. \nYou lose");
+            cpuScore = (cpuScore + 1);
             break;
         case human == "paper" && cpu == 2:
-            alert("You: Paper. CPU: Rock. You win");
+            alert("You: Paper. \nCPU: Rock. \nYou win");
+            humanScore = (humanScore + 1);
             break;
         case human == "scissors" && cpu == 0:
-            alert("You: Scissors. CPU: Paper. You win");
+            alert("You: Paper. \nCPU: Rock. \nYou win");
+            humanScore = (humanScore + 1);
             break;
         case human == "scissors" && cpu == 1:
-            alert("You: Scissors. CPU: Scissors. It's a draw");
+            alert("You: Paper. \nCPU: Paper. \nIt's a draw");
             break;
         case human == "scissors" && cpu == 2:
-            alert("You: Scissors. CPU: Rock. You lose");
+            alert("You: Paper. \nCPU: Scissors. \nYou lose");
+            cpuScore = (cpuScore + 1);
             break;
         case human == "rock" && cpu == 0:
-            alert("You: Rock. CPU: Paper. You lose");
+            alert("You: Paper. \nCPU: Scissors. \nYou lose");
+            cpuScore = (cpuScore + 1);
             break;
         case human == "rock" && cpu == 1:
-            alert("You: Rock. CPU: Scissors. You win");
+            alert("You: Paper. \nCPU: Rock. \nYou win");
+            humanScore = (humanScore + 1);
             break;
         case human == "rock" && cpu == 2:
-            alert("You: Rock. CPU: Rock. It's a draw");
+            alert("You: Paper. \nCPU: Paper. \nIt's a draw");
             break;
         case human == "exit":
             game = "off";
@@ -101,8 +124,8 @@
 </html>
 
 <!--
-
-
+  
+ 
    
 
 
