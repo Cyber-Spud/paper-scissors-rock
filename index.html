@@ -9,6 +9,7 @@
     let turn = 1;
     let humanScore = 0;
     let cpuScore = 0;
+    let special = "false";
 
     game();
 
@@ -17,6 +18,9 @@
             result();
         }
         switch(true) {
+            case special == "true":
+                alert("Oh boy man, you really won hard. We have no more computers. \n We're back in teh dinosaur age.");
+                break;
             case humanScore > cpuScore:
                 alert("Human Score:" + humanScore + "\nCpu Score:" + cpuScore + "\nHumans Win");
                 break;
@@ -39,7 +43,7 @@
         while (option == "invalid") {
             let select = prompt("Paper, Scissors or Rock? \nGame " + turn + " of 5 \n(Type 'Exit' to cancel)");
             select = select.toLowerCase();
-            if (select == "paper" || select == "scissors" || select == "rock") {
+            if (select == "paper" || select == "scissors" || select == "rock"|| select == "rock?") {
                 option = "valid";
                 return(select);
             }
@@ -86,29 +90,36 @@
             humanScore = (humanScore + 1);
             break;
         case human == "scissors" && cpu == 0:
-            alert("You: Paper. \nCPU: Rock. \nYou win");
+            alert("You: Scissors \nCPU: Paper. \nYou win");
             humanScore = (humanScore + 1);
             break;
         case human == "scissors" && cpu == 1:
-            alert("You: Paper. \nCPU: Paper. \nIt's a draw");
+            alert("You: scissors. \nCPU: Scissors. \nIt's a draw");
             break;
         case human == "scissors" && cpu == 2:
-            alert("You: Paper. \nCPU: Scissors. \nYou lose");
+            alert("You: scissors. \nCPU: Rock. \nYou lose");
             cpuScore = (cpuScore + 1);
             break;
         case human == "rock" && cpu == 0:
-            alert("You: Paper. \nCPU: Scissors. \nYou lose");
+            alert("You: rock. \nCPU: paper. \nYou lose");
             cpuScore = (cpuScore + 1);
             break;
         case human == "rock" && cpu == 1:
-            alert("You: Paper. \nCPU: Rock. \nYou win");
+            alert("You: rock. \nCPU: Scissors. \nYou win");
             humanScore = (humanScore + 1);
             break;
         case human == "rock" && cpu == 2:
-            alert("You: Paper. \nCPU: Paper. \nIt's a draw");
+            alert("You: rock. \nCPU: rock. \nIt's a draw");
             break;
         case human == "exit":
             game = "off";
+            break;
+        case human == "rock?":
+            alert("100% calculated \n you found the easter egg and won the entire game... \n congrats?");
+            turn = 5;
+            humanScore = 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+            cpuScore = -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+            special = "true";
             break;
         default:
             alert("Shit, something's broken");
@@ -118,7 +129,6 @@
     }
 
   
-    
     </script>
 </body>
 </html>
@@ -132,4 +142,4 @@
 
 
              
--->
+-->  
